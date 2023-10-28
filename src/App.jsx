@@ -17,7 +17,7 @@ function App() {
       if(userData) dispatch(login({userData}));
       else dispatch(logout());
 
-      if(posts) dispatch(storeAllPosts(posts.documents))
+      if(posts) dispatch(storeAllPosts(posts.documents));
     })
     .finally(()=> setLoading(false));
   }, [])

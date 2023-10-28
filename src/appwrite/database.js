@@ -77,7 +77,7 @@ export class DBService {
             )
         } catch (error) {
             //console.log("Appwrite Service :: GetAllPost Error :: " + error);
-            return [];
+            return null;
         }
     }
 
