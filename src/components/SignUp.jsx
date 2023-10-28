@@ -1,14 +1,11 @@
 import {useState} from 'react';
 import {Logo, Button, Input} from './c.index';
 import authService from '../appwrite/auth';
-import { useDispatch } from 'react-redux';
-import { login as storeLogin } from '../store/authSlice';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 function SignUp() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+
     const [error, setError] = useState("");
     const [btnLoader, setBtnLoader] = useState(false);
     const {register, handleSubmit} = useForm();

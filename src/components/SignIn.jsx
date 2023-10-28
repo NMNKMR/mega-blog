@@ -1,14 +1,10 @@
 import {useState} from 'react';
 import {Logo, Button, Input} from './c.index';
 import authService from '../appwrite/auth';
-import { useDispatch } from 'react-redux';
-import { login as storeLogin } from '../store/authSlice';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 function SignIn() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [error, setError] = useState("");
     const [btnLoader, setBtnLoader] = useState(false);
     const {register, handleSubmit} = useForm();
@@ -19,7 +15,7 @@ function SignIn() {
         authService.login(data)
             .then((session)=> session && window.location.reload())
             .catch((error)=> {
-                if(error === "user_invalid_credentials") setError("Please check email and password");
+                if(error.type === "user_invalid_credentials") setError("Please check email and password");
                 else setError("Invalid Request");
                 setBtnLoader(false);
             });
